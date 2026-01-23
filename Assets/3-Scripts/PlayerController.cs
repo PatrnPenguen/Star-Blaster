@@ -6,9 +6,16 @@ public class PlayerController : MonoBehaviour
     InputAction moveInput;
     Vector3 moveVector;
     [SerializeField] float moveSpeed = 10f;
+
+    private Vector2 minBounds;
+    private Vector2 maxBounds;
+
+    [SerializeField] float paddingX = 1.5f;
+    [SerializeField] float paddingY = 2f;
     void Start()
     {
         moveInput = InputSystem.actions.FindAction("Move");
+        SetupBounds();
     }
 
     void Update()
@@ -16,9 +23,19 @@ public class PlayerController : MonoBehaviour
         MovePlayer();
     }
 
+    void SetupBounds()
+    {
+        Camera cam = Camera.main;
+        minBounds = cam.ViewportToWorldPoint(new Vector2(0, 0));
+        maxBounds = cam.ViewportToWorldPoint(new Vector2(1, 1));
+    }
+
     void MovePlayer()
     {
         moveVector = moveInput.ReadValue<Vector2>();
-        transform.position += moveVector * moveSpeed * Time.deltaTime;
+        Vector3 newPos = transform.position + moveVector *  moveSpeed * Time.deltaTime;
+        newPos.x = Mathf.Clamp(newPos.x, minBounds.x + paddingX, maxBounds.x -  paddingX);
+        newPos.y = Mathf.Clamp(newPos.y, minBounds.y + paddingY, maxBounds.y -  paddingY);
+        transform.position = newPos;
     }
 }
