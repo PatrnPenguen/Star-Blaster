@@ -4,6 +4,7 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     InputAction moveInput;
+    InputAction fireInput;
     Vector3 moveVector;
     [SerializeField] float moveSpeed = 10f;
 
@@ -12,15 +13,20 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] float paddingX = 1.5f;
     [SerializeField] float paddingY = 2f;
+    
+    Shooter playerShooter;
     void Start()
     {
+        playerShooter = GetComponent<Shooter>();
         moveInput = InputSystem.actions.FindAction("Move");
+        fireInput = InputSystem.actions.FindAction("Fire");
         SetupBounds();
     }
 
     void Update()
     {
         MovePlayer();
+        FireShooter();
     }
 
     void SetupBounds()
@@ -37,5 +43,10 @@ public class PlayerController : MonoBehaviour
         newPos.x = Mathf.Clamp(newPos.x, minBounds.x + paddingX, maxBounds.x -  paddingX);
         newPos.y = Mathf.Clamp(newPos.y, minBounds.y + paddingY, maxBounds.y -  paddingY);
         transform.position = newPos;
+    }
+
+    void FireShooter()
+    {
+        playerShooter.isFiring = fireInput.IsPressed();
     }
 }
