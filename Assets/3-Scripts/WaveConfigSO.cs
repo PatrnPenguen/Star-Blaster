@@ -3,7 +3,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "WaveConfigSO", menuName = "Scriptable Objects/WaveConfigSO")]
 public class WaveConfigSO : ScriptableObject
 {
-    [SerializeField] private GameObject[] enemyPrefabs;
+    [SerializeField] GameObject[] enemyPrefabs;
     [SerializeField] Transform pathPrefab;
     [SerializeField] float enemySpeed;
     [SerializeField] float timeBetweenEnemySpawns = 1f;

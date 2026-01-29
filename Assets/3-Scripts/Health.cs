@@ -1,21 +1,61 @@
-using System;
 using UnityEngine;
 
 public class Health : MonoBehaviour
 {
     [SerializeField] int health = 50;
+    [SerializeField] ParticleSystem hitParticles;
 
-    private void OnTriggerEnter2D(Collider2D other)
+    [SerializeField] bool applyCameraShake;
+    [SerializeField] bool isPlayer;
+    [SerializeField] int scoreValue;
+    
+    CameraShake cameraShake;
+    AudioManager audioManager;
+    ScoreKeeper scoreKeeper;
+
+    void Start()
     {
-        DamageDealer damageDealer = other.gameObject.GetComponent<DamageDealer>();
+        audioManager = FindFirstObjectByType<AudioManager>();
+        cameraShake = Camera.main.GetComponent<CameraShake>();
+        scoreKeeper = FindFirstObjectByType<ScoreKeeper>();
+    }
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        DamageDealer damageDealer = other.GetComponent<DamageDealer>();
+
         if (damageDealer != null)
         {
-            health -= damageDealer.GetDamage();
+            TakeDamage(damageDealer.GetDamage());
+            PlayHitParticles();
             damageDealer.Hit();
-            if (health <= 0)
+            audioManager.PlayDamageSFX();
+
+            if (applyCameraShake)
             {
-                Destroy(gameObject);
+                cameraShake.Play();
             }
+        }
+    }
+
+    void TakeDamage(int damage)
+    {
+        health -= damage;
+        if (health <= 0)
+        {
+            if (!isPlayer)
+            {
+                scoreKeeper.AddScore(scoreValue);
+            }
+            Destroy(gameObject);
+        }
+    }
+
+    void PlayHitParticles()
+    {
+        if (hitParticles != null)
+        {
+            ParticleSystem particles = Instantiate(hitParticles, transform.position, Quaternion.identity);
+            Destroy(particles, particles.main.duration + particles.main.startLifetime.constantMax);
         }
     }
 }

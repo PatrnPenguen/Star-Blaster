@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: -3428613972033617493}
   - component: {fileID: 746298482551390023}
   - component: {fileID: 4379870104499576824}
+  - component: {fileID: 1339827935317563034}
   m_Layer: 7
   m_Name: Red Enemy
   m_TagString: Untagged
@@ -167,7 +168,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b383ed7d3fa1b0744b05a56ab332c8c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 50
+  health: 20
+  hitParticles: {fileID: 6312086675471815356, guid: c7fa990c04991e0429404689480c635f, type: 3}
+  applyCameraShake: 0
+  isPlayer: 0
+  scoreValue: 100
 --- !u!114 &4379870104499576824
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -181,6 +186,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 10
+--- !u!114 &1339827935317563034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2592071758533746816}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 368052c94f1557143b11e1e9b7392eed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2671000794845701726
 GameObject:
   m_ObjectHideFlags: 0
@@ -225,11 +242,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49eb33bb594c40c469a7743f8e994009, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectilePrefab: {fileID: 0}
+  projectilePrefab: {fileID: 6871490928779964811, guid: ab9e6e922c60949488880f2ea0579194, type: 3}
   projectileSpeed: 10
   projectileLifeTime: 3
   baseFireRate: 1
-  minimumFireRate: 0.5
-  fireRateVariance: 0.4
-  useAI: 0
+  minimumFireRate: 0.3
+  fireRateVariance: 0.3
+  useAI: 1
   isFiring: 0

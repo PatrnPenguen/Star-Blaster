@@ -1,0 +1,24 @@
+using System;
+using UnityEngine;
+
+public class ScoreKeeper : MonoBehaviour
+{
+    private int score = 0;
+
+    public int GetScore()
+    {
+        return score;
+    }
+
+    public void AddScore(int scoreToAdd)
+    {
+        score += scoreToAdd;
+        score = Mathf.Clamp(score, 0, int.MaxValue);
+        print("Score: " + score);
+    }
+
+    public void ResetScore()
+    {
+        score = 0;
+    }
+}
