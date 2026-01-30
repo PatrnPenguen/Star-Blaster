@@ -200,7 +200,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 6871490928779964811, guid: 653a91e06c7159e4c814f3730dad6065, type: 3}
-  projectileSpeed: 10
+  projectileSpeed: 20
   projectileLifeTime: 5
   baseFireRate: 0.3
   minimumFireRate: 0.2
