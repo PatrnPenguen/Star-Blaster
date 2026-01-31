@@ -10,13 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: de392e502d9241f4f89a09892c6f2c87, type: 3}
-  m_Name: Wave 2
+  m_Name: Wave 8 yellow
   m_EditorClassIdentifier: 
   enemyPrefabs:
-  - {fileID: 2592071758533746816, guid: 4103bc63838f9394381d2271c1cf1ce4, type: 3}
-  - {fileID: 2592071758533746816, guid: 4103bc63838f9394381d2271c1cf1ce4, type: 3}
-  pathPrefab: {fileID: 5164113328474743256, guid: b0e34f44af96d2a46961cb0ffb5fe400, type: 3}
-  enemySpeed: 8
-  timeBetweenEnemySpawns: 1
+  - {fileID: 2592071758533746816, guid: 763b2fcc8a24ab74c91a2cd979374679, type: 3}
+  - {fileID: 2592071758533746816, guid: 763b2fcc8a24ab74c91a2cd979374679, type: 3}
+  - {fileID: 2592071758533746816, guid: 763b2fcc8a24ab74c91a2cd979374679, type: 3}
+  pathPrefab: {fileID: 6290451155381516021, guid: aa51daa390b6a1e46994d460a0901a4c, type: 3}
+  enemySpeed: 12
+  timeBetweenEnemySpawns: 0.8
   enemySpanwVariance: 0.2
   minimumSpanwTime: 0.2

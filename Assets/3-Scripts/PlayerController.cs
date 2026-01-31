@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] float paddingX = 1.5f;
     [SerializeField] float paddingY = 2f;
+    [SerializeField] float paddingYBottom = 4f;
     
     Shooter playerShooter;
     void Start()
@@ -41,7 +42,7 @@ public class PlayerController : MonoBehaviour
         moveVector = moveInput.ReadValue<Vector2>();
         Vector3 newPos = transform.position + moveVector *  moveSpeed * Time.deltaTime;
         newPos.x = Mathf.Clamp(newPos.x, minBounds.x + paddingX, maxBounds.x -  paddingX);
-        newPos.y = Mathf.Clamp(newPos.y, minBounds.y + paddingY, maxBounds.y -  paddingY);
+        newPos.y = Mathf.Clamp(newPos.y, minBounds.y + paddingYBottom, maxBounds.y -  paddingY);
         transform.position = newPos;
     }
 
